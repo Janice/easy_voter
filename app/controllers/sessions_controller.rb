@@ -1,5 +1,10 @@
 class SessionsController < ApplicationController
-def create
+
+  def new
+  end
+
+
+  def create
     user = User.find_by(badge: params[:session][:badge])
     if user && user.authenticate(params[:session][:password])
       sign_in user
@@ -8,6 +13,11 @@ def create
       flash.now[:error] = 'Invalid badge/password combination'
       render 'new'
     end
+  end
+ 
+  def destroy
+    sign_out
+    redirect_to root_url
   end
 
 end
