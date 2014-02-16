@@ -20,8 +20,4 @@ attr_accessor :badge, :name
       self.remember_token = User.encrypt(User.new_remember_token)
     end
 
-    def user_params
-      params.require(:user).permit(:badge, :name, :password,
-                                   :password_confirmation)
-    end
 end
