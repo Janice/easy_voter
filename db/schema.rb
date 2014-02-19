@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140216232522) do
+ActiveRecord::Schema.define(version: 20140219183049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ballots", force: true do |t|
+    t.integer  "user_id"
+    t.string   "category1"
+    t.string   "product1"
+    t.string   "category2"
+    t.string   "product2"
+    t.string   "category3"
+    t.string   "product3"
+    t.string   "category4"
+    t.string   "product4"
+    t.string   "category5"
+    t.string   "product5"
+    t.string   "category6"
+    t.string   "product6"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
