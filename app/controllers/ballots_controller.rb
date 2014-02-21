@@ -1,4 +1,9 @@
 class BallotsController < ApplicationController
+  before_filter :get_user
+
+  def get_user
+    @user = User.find(params[:user_id])
+  end
 
   def show
     @ballot = @user.ballots.find(params[:id])
@@ -20,13 +25,19 @@ class BallotsController < ApplicationController
   end
 
   def create
-    @ballot = current_user.create_ballot(params[:ballot])
+    @ballot = @user.build_ballot(params[:ballot_params])
     if @ballot.save
       flash[:notice] = "Successfully created ballot"
       redirect_to root_url 
     else
       render :action => 'new'
     end
+  end
+
+  private
+
+  def person_params
+    params.require(:ballot).permit(:category1)
   end
 
 end
