@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     user = User.find_by(badge: params[:session][:badge])
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_to user
+      redirect_to ballots_path(current_user)
     else
-      flash.now[:error] = 'Invalid badge/password combination'
+      flash.now[:error] = 'Badge Number Not Registered'
       render 'new'
     end
   end
