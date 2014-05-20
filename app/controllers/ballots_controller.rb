@@ -20,7 +20,7 @@ class BallotsController < ApplicationController
   end
 
   def create
-    @ballot = Ballots.new(params[:ballot])
+    @ballot = Ballot.new(ballot_params)
     @ballot.user = current_user
     if @ballot.save
       flash[:notice] = "Successfully created ballot"
@@ -29,5 +29,10 @@ class BallotsController < ApplicationController
       render :action => 'new'
     end
   end
+
+  private
+    def ballot_params
+      params.require(:ballot).permit(:category1)
+    end
 
 end
