@@ -1,0 +1,16 @@
+<h1>
+    <%= current_user.badge %>
+    <%= current_user.name %>
+</h1>
+
+<%= form_for([@ballot]) do |f| %>
+  <div class="form-group">
+  <dl class="dl-horizontal"> 
+  <%  @categories.each_with_index do |cat| %>
+        <dt><%= label_tag(cat) %></dt>
+        <dd>
+        <%= f.select(:category1, @hsh[cat], :include_blank => true ) %>
+        </dd>   
+  <% end %>
+<%= f.submit("Create Ballot") %>
+<% end %>

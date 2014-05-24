@@ -1,8 +1,6 @@
 EasyVoter::Application.routes.draw do
   resources :users 
-  resources :ballots do
-      resources :votes
-    end
+  resources :ballots 
   
  
   resources :sessions, only: [:new, :create, :destroy]

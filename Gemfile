@@ -6,6 +6,7 @@ gem 'bootstrap-sass'
 
 group :development do
   gem 'rails_layout'
+  gem 'rspec-rails', '2.13.1'
 end
 
 group :test do
