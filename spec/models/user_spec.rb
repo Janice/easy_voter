@@ -33,5 +33,16 @@ describe User do
     before { @user.password_confirmation = "mismatch" }
     it { should_not be_valid }
   end
+
+  describe "when badge number is already taken" do
+    before do
+      user_with_same_badge = @user.dup
+      user_with_same_badge.badge = @user.badge
+      user_with_same_badge.save
+    end
+
+    it { should_not be_valid }
+  end
+
 end
 
